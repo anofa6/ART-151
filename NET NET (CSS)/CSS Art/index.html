@@ -1,54 +1,63 @@
-<style>
-
-  * { box-sizing: border-box; }
-
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-  }
-
-  .frame {
-    position: relative;
-    width: 500px;
-    height: 500px;
-    border: 1px dashed;
-    border-radius: 50%;
-    background: skyblue;
-  }
-  
-  .red-balloon {
-    position: absolute;
-    left: 60px;
-    width: 100px;
-    height: 120px;
-    background: radial-gradient(circle at 30% 30%, #fcc, #f00);
-    border-radius: 50% 50% 51% 49% / 40% 40% 60% 60%;
-    box-shadow: 0 8px 15px #0003,
-      inset -5px -5px 8px #fff7;
-    animation: float 4s ease-in-out infinite;
-  }
-  
-  .red-balloon::after {
-    content: "";
-    display: block;
-    width: 2px;
-    height: 80px;
-    background: black;
-    transform: translate(49px, 120px);
-  }
-  
-  @keyframes float {
-    0%   { transform: translateY(0); }
-    50%  { transform: translateY(20px); }
-    100% { transform: translateY(0); }
-  }
-
-</style>
-
-
-<div class="frame">
-  <div class="red-balloon"></div>
-</div>
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>CSS Art</title>
+    <meta name="author" content="Abdul Nofal">
+    <meta name="description" content="CSS Art">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    
+      * { box-sizing: border-box; }
+    
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+    
+      .frame {
+        position: relative;
+        width: 500px;
+        height: 500px;
+        border: 1px dashed;
+        border-radius: 50%;
+        background: skyblue;
+      }
+      
+      .red-balloon {
+        position: absolute;
+        left: 60px;
+        width: 100px;
+        height: 120px;
+        background: radial-gradient(circle at 30% 30%, #fcc, #f00);
+        border-radius: 50% 50% 51% 49% / 40% 40% 60% 60%;
+        box-shadow: 0 8px 15px #0003,
+          inset -5px -5px 8px #fff7;
+        animation: float 4s ease-in-out infinite;
+      }
+      
+      .red-balloon::after {
+        content: "";
+        display: block;
+        width: 2px;
+        height: 80px;
+        background: black;
+        transform: translate(49px, 120px);
+      }
+      
+      @keyframes float {
+        0%   { transform: translateY(0); }
+        50%  { transform: translateY(20px); }
+        100% { transform: translateY(0); }
+      }
+    
+    </style>
+  </head>
+  <body>
+   <div class="frame">
+     <div class="red-balloon"></div>
+   </div>
+ </body>
+</html>
