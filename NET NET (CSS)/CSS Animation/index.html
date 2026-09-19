@@ -1,31 +1,40 @@
-<style>
-  
-  @keyframes colorZoom {
-    0% {
-      color: black;
-      transform: scale(1);
-    }
-    50% {
-      color: white;
-      transform: scale(0.9);
-    }
-    100% {
-      color: black;
-      transform: scale(1);
-    }
-  }
-
-  h1 {
-    text-align: center;
-    padding: 20px;
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>CSS Animation</title>
+    <meta name="author" content="Abdul Nofal">
+    <meta name="description" content="CSS Animation">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      
+      @keyframes colorZoom {
+        0% {
+          color: black;
+          transform: scale(1);
+        }
+        50% {
+          color: white;
+          transform: scale(0.9);
+        }
+        100% {
+          color: black;
+          transform: scale(1);
+        }
+      }
     
-    animation-name: colorZoom;
-    animation-duration: 4s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-  }
-
-</style>
-
-
-<h1>Welcome to my Home Page!</h1>
+      h1 {
+        text-align: center;
+        padding: 20px;
+        
+        animation-name: colorZoom;
+        animation-duration: 4s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+      }
+    
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to my Home Page!</h1>
+  </body>
+</html>
