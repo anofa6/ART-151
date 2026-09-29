@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/styles.css">
+     <meta name="author" content="Abdul Nofal">
+  </head>
+  <body></body>
+  <script src="js/nn.min.js"></script>
+  <script>
+    function tenPrint () {
+      const hue = nn.random(240)
+      const clr = nn.hsl(hue, 70, 40)
+      const chars = '+ - | [ ] { } ^ < >'
+      let pattern = ''
+      nn.times(1000, () => pattern += nn.random(chars))
+      nn.get('body')
+        .content(pattern)
+        .css('background', clr)
+    }
+    
+    nn.on('load', tenPrint)
+    nn.on('click', tenPrint)
+  
+  </script>
+</html>
