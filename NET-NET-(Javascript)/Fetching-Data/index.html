@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <meta name="author" content="Abdul Nofal">
+  </head>
+  <body></body>
+  <script src="nn.min.js"></script>
+  <script>
+    /* global nn */
+  
+    async function setup () {
+      // fetch data from the "Dog CEO" REST API
+      const url = 'https://dog.ceo/api/breed/affenpinscher/images/random'
+      const res = await fetch(url)
+      const data = await res.json()
+      // press F12 to open console (fn + F12 on mac)
+      console.log(data)
+      // create an <img> and add it to the pag
+      nn.create('img') 
+        .set('src', data.message)
+        .css('width', 300)
+        .addTo('body')
+    }
+  
+    nn.on('load', setup)
+    nn.on('click', setup)
+  
+  </script>
+</html>
