@@ -4,46 +4,76 @@
     <meta name="author" content="Abdul Nofal">
     <title>Intro To JS</title>
     <style>
-      #ball {
-        border-radius: 50%;
+      #box {
         height: 120px;
         width: 120px;
         position: absolute;
-        background: magenta;
-        box-shadow: 10px 10px #9E0B8F;
+        background:  linear-gradient(to top, #80ddff, white);;
+        border: 2px solid black;
+        border-top: none;
+      }
+      
+      #fish {
+        width: 10px;
+        height: 10px;
+        background: orange;
+        border-radius: 25%;
+        border: 1px solid red;
+        position: relative;
       }
     </style>
   </head>
   <body>
-    <div id="ball"></div>
+    <div id="box">
+      <div id="fish"></div>
+    </div>
   </body>
   <script>
     let nameObj = "Ball";
-    let speed = 5;
+    let BoxSpeed = 3;
+    let fishSpeed = 3;
     let moving = true;
     
-    let x = 0;
-    let y = 0;
-    let dx = speed;
-    let dy = speed;
+    let BoxX = 0;
+    let BoxY = 0;
+    let Boxdx = BoxSpeed;
+    let Boxdy = BoxSpeed * 2/3;
+    
+    let fishX = 0;
+    let fishY = 0;
+    let fishdx = fishSpeed * 2/3;
+    let fishdy = fishSpeed;
         
     function moveBall() {
       if(moving) {
-        x += dx;
-        y += dy;
+        BoxX += Boxdx;
+        BoxY += Boxdy;
         
-        if(x <= 0 || x >= window.innerWidth - 130) {
-          dx = -dx;
+        if(BoxX <= 0 || BoxX >= window.innerWidth - 124) {
+          Boxdx = -Boxdx;
         }
-        if(y <= 0 || y >= window.innerHeight - 130) {
-          dy = -dy;
+        if(BoxY <= 0 || BoxY >= window.innerHeight - 124) {
+          Boxdy = -Boxdy;
         }
         
-        ball.style.left = x + "px";
-        ball.style.top = y + "px";
+        box.style.left = BoxX + "px";
+        box.style.top = BoxY + "px";
+        
+        fishX += fishdx;
+        fishY += fishdy;
+        
+        if(fishX <= 0 || fishX >= 110) {
+          fishdx = -fishdx;
+        }
+        if(fishY <= 0 || fishY >= 110) {
+          fishdy = -fishdy;
+        }
+        
+        fish.style.left = fishX + "px";
+        fish.style.top = fishY + "px";
       }
     }
-    
+      
     moveBall();
     setInterval(moveBall, 20);
   </script>
