@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <meta name="author" content="Abdul Nofal">
+  </head>
+  <body></body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.min.js"></script>
+  <script>
+    /* global p5 */
+    const sketch = (p) => {
+      p.setup = () => {
+        p.createCanvas(700, 500)
+        p.background(144, 66, 245)
+      }
+  
+      p.draw = () => {
+        p.fill(255, 228, 56)
+        p.rect(p.mouseX, p.mouseY, 10, 50)
+      }
+    }
+    new p5(sketch)
+  </script>
+</html>
