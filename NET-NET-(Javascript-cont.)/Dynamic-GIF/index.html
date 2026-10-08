@@ -1,1 +1,67 @@
+<script src="nn.min.js"></script>
+<script>
+  /* global nn */
+  let fg, bg
 
+  function setup () {
+    // pick two random colors
+    fg = nn.randomColor()
+    bg = nn.randomColor()
+    // ensure WCGA AA conlor contrast
+    while (nn.colorContrast(fg, bg) < 4.5) {
+      fg = nn.randomColor()
+    }
+    // update body's content and styles
+    nn.get('body')
+      .content('Hi World Wide Web!')
+      .css({ 
+        color: fg, 
+        background: bg,
+        overflow: 'hidden',
+        height: '100vh',
+        display: 'grid',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: 72
+      })
+    // run the createGif function 50 times
+    nn.times(100, createGif)
+  }
+  
+  function createGif () {
+    // creat a random x,y position slightly beyond the page
+    const x = nn.random(-100, nn.width + 100)
+    const y = nn.random(-100, nn.height + 100)
+    const r = nn.random(360)
+    const c = nn.toHSL(fg)
+    // create an img element for our butterfly gif
+    nn.create('img')
+      .set('src', 'butterfly.gif')
+      .addTo('body')
+      .position(x, y)
+      .rotate(r)
+      .hueRotate(60 - c.h)
+      .saturate(c.s / 100)
+      .brightness(c.l / 100)
+      .css({
+        cursor: 'grab',
+        userSelect: 'none',
+        transition: 'all 1.5s ease-out'
+      })
+      .on('mouseover', async function () {
+        this.scale(3)
+        this.css('opacity', 0)
+        this.rotate(r - 180)
+        await nn.sleep(1500)
+        this.remove()
+      })
+  }
+  
+  function update () {
+    nn.getAll('img').forEach(img => img.remove())
+    setup()
+  }
+  
+  nn.on('load', setup)
+  nn.on('click', update)
+</script>
