@@ -1,22 +1,22 @@
 <script src="nn.min.js"></script>
 <script>
   /* global nn */
-  let fg, bg
+  let foreground, background
 
   function setup () {
     // pick two random colors
-    fg = nn.randomColor()
-    bg = nn.randomColor()
+    foreground = nn.randomColor()
+    background = nn.randomColor()
     // ensure WCGA AA conlor contrast
-    while (nn.colorContrast(fg, bg) < 4.5) {
-      fg = nn.randomColor()
+    while (nn.colorContrast(foreground, background) < 3) {
+      foreground = nn.randomColor()
     }
     // update body's content and styles
     nn.get('body')
       .content('Hi World Wide Web!')
       .css({ 
-        color: fg, 
-        background: bg,
+        color: foreground, 
+        background: background,
         overflow: 'hidden',
         height: '100vh',
         display: 'grid',
@@ -25,7 +25,7 @@
         fontSize: 72
       })
     // run the createGif function 50 times
-    nn.times(100, createGif)
+    nn.times(50, createGif)
   }
   
   function createGif () {
@@ -33,7 +33,7 @@
     const x = nn.random(-100, nn.width + 100)
     const y = nn.random(-100, nn.height + 100)
     const r = nn.random(360)
-    const c = nn.toHSL(fg)
+    const c = nn.toHSL(foreground)
     // create an img element for our butterfly gif
     nn.create('img')
       .set('src', 'butterfly.gif')
