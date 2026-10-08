@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <meta name="author" content="Abdul Nofal">
+  </head>
+  <body></body>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.15/paper-full.min.js'></script>
+  <script>
+    /* global paper */
+    let path
+    // Changed # of points //
+    const points = 40
+    const segLength = 10
+  
+    function setup () {
+      const canvas = document.createElement('canvas')
+      // Changed Canvas Size
+      canvas.width = 800
+      canvas.height =  700
+      document.body.appendChild(canvas)
+  
+      paper.setup(canvas)
+      
+      path = new paper.Path({
+        // Changed Color //
+        strokeColor: 'purple',
+        // Changed Stroke Width //
+        strokeWidth: 10,
+        // Changed Cap //
+        strokeCap: 'square'
+      })
+  
+      const start = paper.view.center.divide([10, 1])
+      for (let i = 0; i < points; i++) {
+        const seg = new paper.Point(i * segLength, 0)
+        const point = start.add(seg)
+        path.add(point)
+      }
+  
+      paper.view.onMouseMove = update
+    }
+  
+    function update (e) {
+      path.firstSegment.point = e.point
+  
+      for (let i = 0; i < points - 1; i++) {
+        const seg = path.segments[i]
+        const nextSeg = seg.next
+        const vector = seg.point.subtract(nextSeg.point)
+        vector.length = segLength
+        nextSeg.point = seg.point.subtract(vector)
+      }
+  
+      path.smooth({ type: 'continuous' })
+    }
+  
+    window.addEventListener('load', setup)
+  </script>
+</html>
