@@ -4,26 +4,34 @@ let amplitude = 0;
 let vol = 0;
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(300, 300);
+  angleMode(DEGREES);
+  strokeWeight(10);
+  stroke('red');
 }
 
 function draw() {
   if(capture) {
-    // let vol = mic.getLevel();
+    vol = mic.getLevel();
     
-    image(capture, 0, 0, 300, 300 * capture.height / capture.width);
-    filter(BLUR, map(vol, 0, 300, 0, 4));
+    image(capture, 0, 0, 300, 300);
+    
+    push();
+    translate(150, 290);
+    rotate(180);
+    line(0, 0, 150 * cos(map(vol, 0, 0.7, 0, 180)), 150 * sin(map(vol, 0, 0.7, 0, 180)));
+    pop();
+    
+    filter(BLUR, map(vol, 0, 0.7, 0, 4));
     filter(POSTERIZE, 3);
-  }
-  
-  vol++;
-  if(vol > 300) {
-    vol = 0;
+    
+    console.log(vol);
   }
 }
 
 function mousePressed() {
   capture = createCapture(VIDEO);
+  capture.hide();
   mic = new p5.AudioIn();
   mic.start();
 }
